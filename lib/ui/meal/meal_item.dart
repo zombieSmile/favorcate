@@ -1,4 +1,5 @@
 import 'package:favorcate/model/meal.dart';
+import 'package:favorcate/ui/detail/detail.dart';
 import 'package:favorcate/ui/meal/operation_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,17 +16,23 @@ class MealItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(10.w),
-      elevation: 5,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(cardRadius)),
-      child: Column(
-        children: [
-          buildBasicInfo(),
-          buildOperationInfo(),
-        ],
+    return GestureDetector(
+      child: Card(
+        margin: EdgeInsets.all(10.w),
+        elevation: 5,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(cardRadius)),
+        child: Column(
+          children: [
+            buildBasicInfo(),
+            buildOperationInfo(),
+          ],
+        ),
       ),
+      onTap: () {
+        Navigator.of(context)
+            .pushNamed(DetailPage.routeName, arguments: mealModel);
+      },
     );
   }
 
