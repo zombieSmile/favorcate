@@ -1,4 +1,5 @@
 import 'package:favorcate/model/category.dart';
+import 'package:favorcate/ui/meal/meal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,22 +14,28 @@ class HomeCategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bgColor = categoryModel.cColor;
-    return Container(
-      decoration: BoxDecoration(
-        color: bgColor,
-        borderRadius: BorderRadius.circular(10.w),
-        gradient: LinearGradient(
-          colors: [bgColor.withOpacity(.5), bgColor],
+    return GestureDetector(
+      child: Container(
+        decoration: BoxDecoration(
+          color: bgColor,
+          borderRadius: BorderRadius.circular(10.w),
+          gradient: LinearGradient(
+            colors: [bgColor.withOpacity(.5), bgColor],
+          ),
+        ),
+        alignment: Alignment.center,
+        child: Text(
+          categoryModel.title,
+          style: TextStyle(
+            fontSize: 20.sp,
+            color: Colors.black87,
+          ),
         ),
       ),
-      alignment: Alignment.center,
-      child: Text(
-        categoryModel.title,
-        style: TextStyle(
-          fontSize: 20.sp,
-          color: Colors.black87,
-        ),
-      ),
+      onTap: () {
+        Navigator.of(context)
+            .pushNamed(MealPage.routeName, arguments: categoryModel);
+      },
     );
   }
 }
