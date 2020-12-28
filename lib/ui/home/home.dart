@@ -1,3 +1,4 @@
+import 'package:favorcate/ui/home/home_content.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -7,9 +8,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("美食"),
       ),
-      body: Center(
-        child: Text("美食"),
-      ),
+      body: HomeContent(),
     );
   }
 }
