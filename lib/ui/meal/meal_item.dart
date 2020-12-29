@@ -1,8 +1,10 @@
 import 'package:favorcate/model/meal.dart';
 import 'package:favorcate/ui/detail/detail.dart';
 import 'package:favorcate/ui/meal/operation_item.dart';
+import 'package:favorcate/viewmodel/favor_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 final cardRadius = 12.w;
 
@@ -25,7 +27,7 @@ class MealItem extends StatelessWidget {
         child: Column(
           children: [
             buildBasicInfo(),
-            buildOperationInfo(),
+            buildOperationInfo(context),
           ],
         ),
       ),
@@ -70,26 +72,40 @@ class MealItem extends StatelessWidget {
     );
   }
 
-  Widget buildOperationInfo() {
-    return Padding(
-      padding: EdgeInsets.all(16.w),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          OperationItem(
-            icon: Icon(Icons.schedule),
-            title: '${mealModel.duration}分钟',
-          ),
-          OperationItem(
-            icon: Icon(Icons.restaurant),
-            title: '${mealModel.complexStr}',
-          ),
-          OperationItem(
-            icon: Icon(Icons.favorite),
-            title: '未收藏',
-          ),
-        ],
+  Widget buildOperationInfo(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        OperationItem(
+          icon: Icon(Icons.schedule),
+          title: '${mealModel.duration}分钟',
+        ),
+        OperationItem(
+          icon: Icon(Icons.restaurant),
+          title: '${mealModel.complexStr}',
+        ),
+        buildFavorItem(context),
+      ],
+    );
+  }
+
+  Widget buildFavorItem(BuildContext context) {
+    FavorViewModel favorViewModel = context.watch<FavorViewModel>();
+    final iconData = favorViewModel.isFavor(mealModel)
+        ? Icons.favorite
+        : Icons.favorite_border;
+    final favorColor =
+        favorViewModel.isFavor(mealModel) ? Colors.red : Colors.black;
+    final title = favorViewModel.isFavor(mealModel) ? "收藏" : "未收藏";
+    return GestureDetector(
+      child: OperationItem(
+        icon: Icon(iconData, color: favorColor),
+        title: title,
+        textColor: favorColor,
       ),
+      onTap: () {
+        favorViewModel.handleMeal(mealModel);
+      },
     );
   }
 }
