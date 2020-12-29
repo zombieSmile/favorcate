@@ -1,5 +1,5 @@
-import 'package:favorcate/ui/home/home_content.dart';
 import 'package:flutter/material.dart';
+import 'home_content.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -7,6 +7,12 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("美食"),
+        leading: IconButton(
+          icon: Icon(Icons.build),
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
+        ),
       ),
       body: HomeContent(),
     );

@@ -1,7 +1,7 @@
 import 'package:favorcate/model/meal.dart';
-import 'package:favorcate/ui/detail/detail_content.dart';
-import 'package:favorcate/ui/detail/detail_floating_button.dart';
 import 'package:flutter/material.dart';
+import 'detail_content.dart';
+import 'detail_floating_button.dart';
 
 class DetailPage extends StatelessWidget {
   static const String routeName = "/meal/detail";

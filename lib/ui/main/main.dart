@@ -1,6 +1,7 @@
-import 'package:favorcate/ui/main/initialize_items.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'initialize_items.dart';
+import 'drawer.dart';
 
 class MainPage extends StatefulWidget {
   static const String routeName = "/";
@@ -30,6 +31,7 @@ class _MainPageState extends State<MainPage> {
           });
         },
       ),
+      drawer: MainDrawer(),
     );
   }
 }

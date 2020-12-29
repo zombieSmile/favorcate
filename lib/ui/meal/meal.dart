@@ -1,6 +1,6 @@
 import 'package:favorcate/model/category.dart';
-import 'package:favorcate/ui/meal/meal_content.dart';
 import 'package:flutter/material.dart';
+import 'meal_content.dart';
 
 class MealPage extends StatelessWidget {
   static const String routeName = '/meal';

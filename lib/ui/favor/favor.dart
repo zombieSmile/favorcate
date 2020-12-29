@@ -1,5 +1,5 @@
-import 'package:favorcate/ui/favor/favor_content.dart';
 import 'package:flutter/material.dart';
+import 'favor_content.dart';
 
 class FavorPage extends StatelessWidget {
   @override

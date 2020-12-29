@@ -1,10 +1,10 @@
 import 'package:favorcate/model/category.dart';
 import 'package:favorcate/model/meal.dart';
-import 'package:favorcate/ui/meal/meal_item.dart';
 import 'package:favorcate/viewmodel/meal_view_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'meal_item.dart';
 
 class MealContent extends StatelessWidget {
   @override
