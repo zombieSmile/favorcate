@@ -1,6 +1,7 @@
 import 'package:favorcate/route/route.dart';
 import 'package:favorcate/services/app_theme.dart';
 import 'package:favorcate/viewmodel/favor_view_model.dart';
+import 'package:favorcate/viewmodel/fliter_view_model.dart';
 import 'package:favorcate/viewmodel/meal_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,8 +11,15 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => MealViewModel()),
-        ChangeNotifierProvider(create: (context) => FavorViewModel()),
+        ChangeNotifierProvider(create: (context) => FilterViewModel()),
+        ChangeNotifierProvider(create: (ctx) => FavorViewModel()),
+        ChangeNotifierProxyProvider<FilterViewModel, MealViewModel>(
+          create: (context) => MealViewModel(),
+          update: (context, filerViewModel, mealViewModel) {
+            mealViewModel.filterViewModel = filerViewModel;
+            return mealViewModel;
+          },
+        ),
       ],
       child: MyApp(),
     ),

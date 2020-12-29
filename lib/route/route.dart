@@ -1,4 +1,5 @@
 import 'package:favorcate/ui/detail/detail.dart';
+import 'package:favorcate/ui/filter/filter.dart';
 import 'package:favorcate/ui/main/main.dart';
 import 'package:favorcate/ui/meal/meal.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,14 @@ class CustomRouter {
   };
 
   static final RouteFactory generateRoute = (settings) {
+    if (settings.name == FilterPage.routeName) {
+      return MaterialPageRoute(
+        builder: (context) {
+          return FilterPage();
+        },
+        fullscreenDialog: true,
+      );
+    }
     return null;
   };
 

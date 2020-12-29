@@ -1,3 +1,4 @@
+import 'package:favorcate/ui/filter/filter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,7 +14,9 @@ class MainDrawer extends StatelessWidget {
             buildListTile(Icons.restaurant, '进餐', () {
               Navigator.of(context).pop();
             }),
-            buildListTile(Icons.settings, '过滤', () {}),
+            buildListTile(Icons.settings, '过滤', () {
+             Navigator.of(context).pushNamed(FilterPage.routeName);
+            }),
           ],
         ),
       ),
